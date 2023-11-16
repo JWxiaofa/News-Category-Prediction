@@ -49,7 +49,7 @@ There are 41 categories in total.
 ![bar](Figure_1.png)
 
 
-First, I removed the categories with data less than 5000, then there are 11 categories left:
+First remove the categories with data less than 5000, then there are 11 categories left:
 
 ```
 {'POLITICS': 35602, 
@@ -65,7 +65,7 @@ First, I removed the categories with data less than 5000, then there are 11 cate
 'SPORTS': 5077}
 ```
 
-Then, I did text pre-processing:
+Then do the text pre-processing:
 1. Delete unneeded keywords, such as *author*, *link*..., and keep only the *headline* and *short_description*. Combine *headline* and *short_description* into ***text***.
 2. text processing
    1. Remove numbers, punctuations and stop words in text.
@@ -86,7 +86,7 @@ Then, I did text pre-processing:
       'text': 'amazon greenlight blade runner limit seri produc ridley scott director origin film join writer sequel newest instal scifi franchis'}
       ```
 
-Finally, I splited data into train/dev/test with `train_test_spint()`, and saved them as a .py file respectively. The ratio of train, dev, test is 8:1:1.
+Finally, Split data into train/dev/test with `train_test_spint()`, and saved them as a .py file respectively. The ratio of train, dev, test is 8:1:1.
 ```commandline
 train_data: 103133
 dev_data: 12892
@@ -96,11 +96,11 @@ test_data: 12892
 All operations above were finished in `data_process.py`.
 
 ## 3. Dev set results
-For models, I used Naive Bayes `MultinomialNB()`, logistic regression `LogisticRegression()` and decision tree `DecisionTreeClassifier()`.
+Models: Naive Bayes `MultinomialNB()`, logistic regression `LogisticRegression()` and decision tree `DecisionTreeClassifier()`.
 
-For features, I used unigram `CountVectorizer()`, bigram `CountVectorizer(ngram_range=(2, 2))` and tf-idf `TfidfVectorizer()`.
+Features: unigram `CountVectorizer()`, bigram `CountVectorizer(ngram_range=(2, 2))` and tf-idf `TfidfVectorizer()`.
 
-First, I tried every feature on each model with default parameters, the results (accuracy scores) are as follows:
+The result (accuracy scores) of using every feature on each model with default parameters are as follows:
 
 | | Naive Bayes | Logistic Regression |Decition Tree
 |---|-------------|---------------------|---|
@@ -113,7 +113,7 @@ Top 3 configurations are:
 2. unigram & Logistic Regression (LR)
 3. tf-idf & Logistic Regression (LR)
 
-Then, I tried these 3 configurations with different hyperparameters:
+Fine tune these 3 configurations with different hyperparameters:
 ```commandline
 parameters = [0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0]
 ```
@@ -134,7 +134,7 @@ If using **unigram & NB**, the best performance is when k = 0.5.
 If using **unigram & LR**, the best performance is when C = 0.1.
 If using **tf-idf & LR**, the best performance is when C = 1.0.
 
-So I'll try these three configurations on the test set.
+Next is to use these three configurations to test on the test set.
 
 
 ## 4. Test set results
@@ -180,6 +180,5 @@ In conclusion, this model performs pretty well on most categories.
 
 A few categories don't get good scores like "COMEDY" and "HEALTHY LIVING", one possible reason is that those categories might be related with some other categories, which could influence the result.
 
-I think the selection of features and the vectorization of text are more complicated than I thought. For this task, I think name, location, organization... might also have an impact on classification. If I have time, I would consider this more.
 
 
