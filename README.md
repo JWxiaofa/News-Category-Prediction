@@ -176,7 +176,7 @@ In Logistic Regression model, tf-idf performed better than CountVectorizer(), pr
 
 ## 6. Conclusion
 
-In conclusion, this model performs pretty well on most categories. 
+In conclusion, this model performs pretty well on most categories, achieved 78.3% accuracy with LR model and tf-idf feature. 
 
 A few categories don't get good scores like "COMEDY" and "HEALTHY LIVING", one possible reason is that those categories might be related with some other categories, which could influence the result.
 
