@@ -169,16 +169,6 @@ Next is to use these three configurations to test on the test set.
 
 All operations in 3 & 4 were finished in `train.py`.
 
-## 5. Discussion
-In all three models, unigram performed better than bigram. It's probably because in this dataset, the frequency of every bigram is quite average after moving stop words. I did a count and found that each bigram basically only occurred once or twice.
-
-In Logistic Regression model, tf-idf performed better than CountVectorizer(), probablly because tf-idf has better linearly speratable classes.
-
-## 6. Conclusion
-
-In conclusion, this model performs pretty well on most categories, achieved 78.3% accuracy with LR model and tf-idf feature. 
-
-A few categories don't get good scores like "COMEDY" and "HEALTHY LIVING", one possible reason is that those categories might be related with some other categories, which could influence the result.
 
 
 
